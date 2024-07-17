@@ -41,9 +41,8 @@ This project sets up a Samba server using Docker and Docker Compose. The Samba s
 Add user credentials in the .env file:
 
     ```bash
-    USER1=foo
+    USER1=user1
     PASSWORD1=pass1
-    USER2=too
+    USER2=user2
     PASSWORD2=pass2
-    # Add more users as needed
     ```

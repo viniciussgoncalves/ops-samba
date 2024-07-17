@@ -1,9 +1,12 @@
 # Use the Alpine base image
-FROM alpine
+FROM alpine:3.20.1
 
 # Install necessary packages
 RUN apk update && \
-    apk add --no-cache samba samba-common-tools && \
+    apk add --no-cache \
+    samba=4.19.6-r0 \
+    samba-common-tools=4.19.6-r0 \
+    openssl=3.3.1-r3 && \
     rm -rf /var/cache/apk/*
 
 # Create the directory for sharing
@@ -24,7 +27,7 @@ RUN chown -R root:smbusers /mount && \
     chmod -R 0770 /mount
 
 # Expose ports 139 and 445 (NetBIOS and SMB)
-EXPOSE 139 445
+EXPOSE 445
 
 # Command to start the Samba service and create users
-CMD /usr/local/bin/create_users.sh && smbd -FS --no-process-group
+CMD /usr/local/bin/create_users.sh && smbd -F --no-process-group

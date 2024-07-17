@@ -4,16 +4,20 @@
 add_samba_user() {
     local user=$1
     local password=$2
-    adduser -D -H -G smbusers "$user"
-    echo -e "$password\n$password" | smbpasswd -a -s "$user"
+    if id "$user" &>/dev/null; then
+        echo "User $user already exists, skipping creation."
+    else
+        adduser -D -H -G smbusers "$user"
+        echo -e "$password\n$password" | smbpasswd -a -s "$user"
+    fi
 }
 
 # Add users based on environment variables
 for i in $(seq 1 10); do
     user_var="USER${i}"
     password_var="PASSWORD${i}"
-    user=${!user_var}
-    password=${!password_var}
+    user=$(eval echo \$$user_var)
+    password=$(eval echo \$$password_var)
     if [ -n "$user" ] && [ -n "$password" ]; then
         add_samba_user "$user" "$password"
     fi

@@ -3,7 +3,6 @@ services:
     build: .
     container_name: samba
     ports:
-      - "139:139"
       - "445:445"
     volumes:
       - ./mount:/mount
