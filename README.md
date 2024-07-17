@@ -4,17 +4,17 @@ This project sets up a Samba server using Docker and Docker Compose. The Samba s
 
 ## Project Structure
 
-/ops-samba
-├── config
-│   └── smb.conf
-├── mount
-├── create_users.sh
-├── Dockerfile
-├── docker-compose.yml
-├── .env
-├── .gitignore
-├── README.md
-└── LICENSE
+    .
+    ├── config
+    │   └── smb.conf
+    ├── mount
+    ├── create_users.sh
+    ├── Dockerfile
+    ├── docker-compose.yml
+    ├── .env
+    ├── .gitignore
+    ├── README.md
+    └── LICENSE
 
 ## Getting Started
 
@@ -30,13 +30,13 @@ This project sets up a Samba server using Docker and Docker Compose. The Samba s
    ```bash
    git clone https://github.com/your-username/samba-server-docker.git
    cd ops-samba
-    ```
+   ```
 
 2. **Create the .env file:**
 
-    ```bash
-    echo > .env
-    ```
+   ```bash
+   echo > .env
+   ```
 
 Add user credentials in the .env file:
 

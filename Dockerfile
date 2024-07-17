@@ -2,7 +2,9 @@
 FROM alpine
 
 # Install necessary packages
-RUN apk update && apk add samba samba-common-tools
+RUN apk update && \
+    apk add --no-cache samba samba-common-tools && \
+    rm -rf /var/cache/apk/*
 
 # Create the directory for sharing
 RUN mkdir -p /mount
