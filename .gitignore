@@ -1,0 +1,5 @@
+# Ignore the mount directory
+mount/*
+
+# Ignore environment variable file
+.env
